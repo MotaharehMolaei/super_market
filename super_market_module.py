@@ -14,11 +14,11 @@ def quantity_validator(quantity):
         raise NameError("Invalid quantity!")
 
 def price_validator(price):
-    if not price > 0:
+    if not (type(price) == float and price > 0):
         raise NameError("Invalid price!")
 
 def expiration_date_validator(expire_date):
-    if not expire_date > datetime.today().date():
+    if not expire_date >= datetime.today().date():
         raise NameError("Invalid expiration date!")
 
 

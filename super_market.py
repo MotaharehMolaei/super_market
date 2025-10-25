@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
-from my_module import *
-from datetime import datetime
+from super_market_module import *
+from datetime import datetime,date
 
 
 product_list = []
@@ -21,16 +21,16 @@ def save():
             "brand": brand.get(),
             "quantity": quantity.get(),
             "price": price.get(),
-            "expiration_date": expire_date.get()
+            "expiration_date": exp_date
         }
         product_list.append(product)
         messagebox.showinfo("Saved", "Product saved successfully!")
         id.set(0)
         name.set("")
         brand.set("")
-        quantity.set("0")
-        price.set("0.0")
-        expire_date.set("")
+        quantity.set(0)
+        price.set(0.0)
+        expire_date.set(str(date.today()))
     except Exception as e:
         messagebox.showerror("Save Error", f"Error: {e}")
 
@@ -49,7 +49,8 @@ def total_price():
 
 window = Tk()
 window.title("Supermarket App")
-window.geometry("600x400")
+window.geometry("330x350")
+# window.config(background="blue")
 
 # id
 Label (window, text="Id").place(x=30, y=30)
@@ -81,7 +82,7 @@ Label(window, text="Expiration Date\n YYYY-MM-DD").place(x=30, y=230)
 expire_date = StringVar()
 Entry(window, textvariable=expire_date).place(x=150, y=230)
 
-Button (window, text="Save", command=save).place(x=80, y=280, width=100)
-Button(window, text="Total", command=total_price).place(x=200, y=280, width=100)
+Button (window, text="Save", command=save).place(x=30, y=280, width=100)
+Button(window, text="Total", command=total_price).place(x=175, y=280, width=100)
 
 window.mainloop()
