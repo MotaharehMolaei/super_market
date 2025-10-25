@@ -17,9 +17,17 @@ def price_validator(price):
     if not price > 0:
         raise NameError("Invalid price!")
 
-def expiration_date_validator(expire_date):
-    if not expire_date > datetime.today().date():
-        raise NameError("Invalid expiration date!")
+
+def expiration_date_validator(dates):
+    try:
+        exp_date = datetime.strptime(dates, "%Y-%m-%d").date()
+    except:
+        raise ValueError("Expiration date format error!")
+
+    if exp_date < date.today():
+        raise ValueError("Expiration date cannot be in the past")
+
+    return exp_date
 
 
 

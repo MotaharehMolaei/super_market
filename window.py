@@ -12,8 +12,8 @@ def save():
         brand_validator(brand.get())
         quantity_validator(quantity.get())
         price_validator(price.get())
-        exp_date = datetime.strptime(expire_date.get(), "%Y-%m-%d").date()
-        expiration_date_validator(exp_date)
+        exp_date = expiration_date_validator(expire_date.get())
+
         product = {
             "id": id.get(),
             "name": name.get(),
