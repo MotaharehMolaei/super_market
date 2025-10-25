@@ -12,7 +12,7 @@ def save():
         brand_validator(brand.get())
         quantity_validator(quantity.get())
         price_validator(price.get())
-        exp_date = expiration_date_validator(expire_date.get())
+        expiration_date_validator(expire_date.get())
 
         product = {
             "id": id.get(),
@@ -20,7 +20,7 @@ def save():
             "brand": brand.get(),
             "quantity": quantity.get(),
             "price": price.get(),
-            "expiration_date": exp_date
+            "expiration_date": expire_date.get()
         }
         product_list.append(product)
         messagebox.showinfo("Saved", "Product saved successfully!")
